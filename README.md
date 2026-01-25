@@ -43,6 +43,7 @@
 ### 2. 匯入工作流
 * 匯入 `Data Ingestion.json`：處理資料寫入。
 * 匯入 `RAG Retrieval.json`：處理問答檢索。
+* 並在您的 n8n 面板選擇 **"Import from File"** 進行匯入。
 
 ### 3. 設定憑證
 * **OpenAI**: 提供 Embedding 與 LLM 服務。
