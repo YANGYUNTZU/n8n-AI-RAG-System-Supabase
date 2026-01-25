@@ -49,7 +49,51 @@
 * **Supabase**: 提供向量存取服務。
 * **Google Drive**: 用於讀取原始知識庫檔案。
 
-## 📊 流程結構
+### 🗄️ Supabase 資料庫設定 (SQL)
+請在 Supabase 的 SQL Editor 中執行以下指令，以建立相容於此工作流的向量資料表：
+
+```sql
+-- 1. 啟用 pgvector 擴展
+create extension if not exists vector;
+
+-- 2. 建立儲存文件的資料表
+create table documents (
+  id bigserial primary key,
+  content text, -- 對應 n8n 的 metadata 內容
+  metadata jsonb,
+  embedding vector(1536) -- OpenAI text-embedding-3-small 使用 1536 維度
+);
+
+-- 3. 建立相似度檢索函數 (match_documents)
+create or replace function match_documents (
+  query_embedding vector(1536),
+  match_threshold float,
+  match_count int
+)
+returns table (
+  id bigint,
+  content text,
+  metadata jsonb,
+  similarity float
+)
+language plpgsql
+as $$
+begin
+  return query
+  select
+    documents.id,
+    documents.content,
+    documents.metadata,
+    1 - (documents.embedding <=> query_embedding) as similarity
+  from documents
+  where 1 - (documents.embedding <=> query_embedding) > match_threshold
+  order by similarity desc
+  limit match_count;
+end;
+$$;
+```
+
+### 📊 流程結構
 
 ```mermaid
 graph TD
