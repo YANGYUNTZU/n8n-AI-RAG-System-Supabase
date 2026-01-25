@@ -112,7 +112,7 @@ graph TD
 
 ## 📸 執行截圖範例
 
-![工作流配置](/images/Data Ingestion_workflow.png)
-![工作流配置](/images/RAG Retrieval_workflow.png)
+![工作流配置](/images/Data_Ingestion_workflow.png)
+![工作流配置](/images/RAG_Retrieval_workflow.png)
 
 圖：AI Agent 成功從向量資料庫中提取專業知識並回答使用者問題。
