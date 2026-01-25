@@ -41,8 +41,8 @@
 請確保您的 Supabase 已啟用 `pgvector` 擴展，並建立對應的 `documents` 表與 `match_documents` 函數。
 
 ### 2. 匯入工作流
-* 匯入 `向量資料庫.json`：處理資料寫入。
-* 匯入 `提取向量資料庫.json`：處理問答檢索。
+* 匯入 `Data Ingestion.json`：處理資料寫入。
+* 匯入 `RAG Retrieval.json`：處理問答檢索。
 
 ### 3. 設定憑證
 * **OpenAI**: 提供 Embedding 與 LLM 服務。
