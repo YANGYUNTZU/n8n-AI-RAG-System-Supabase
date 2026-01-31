@@ -39,6 +39,7 @@
 
 ### 1. 資料庫準備 (Supabase)
 請確保您的 Supabase 已啟用 `pgvector` 擴展，並建立對應的 `documents` 表與 `match_documents` 函數。
+可以下載提供的文件檔案。
 
 ### 2. 匯入工作流
 * 匯入 `Data Ingestion.json`：處理資料寫入。
